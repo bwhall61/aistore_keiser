@@ -43,6 +43,3 @@ def probing_frequency(dur: int) -> float:
     freq = min(dur / 8.0, 1.0)
     freq = max(dur / 64.0, freq)
     return max(freq, 0.1)
-
-def expand_client_url(bck: Bck, objects: list, client: Client):
-    return [client.base_url+"/objects/"+bck.name+"/"+obj+"?provider="+bck.provider for obj in objects]
