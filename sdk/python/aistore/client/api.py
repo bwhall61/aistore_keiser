@@ -62,6 +62,9 @@ class Client:
             handle_errors(resp)
         return resp
 
+    def expand_client_url(self, bck: Bck, objects: list):
+        return [self.base_url+"/objects/"+bck.name+"/"+obj+"?provider="+bck.provider for obj in objects]
+    
     def list_buckets(self, provider: str = ProviderAIS):
         """
         Returns list of buckets in AIStore cluster
