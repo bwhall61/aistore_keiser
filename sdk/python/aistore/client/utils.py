@@ -6,7 +6,6 @@ import requests
 
 from aistore.client.errors import AISError, ErrBckNotFound, ErrRemoteBckNotFound
 from aistore.client.types import HttpError
-from aistore.client.api import Client, Bck
 
 
 def _raise_error(text: str):
