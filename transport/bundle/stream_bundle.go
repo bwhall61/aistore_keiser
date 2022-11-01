@@ -347,9 +347,9 @@ func (sb *Streams) Resync() {
 		nbundle[id] = robin
 	}
 	for id, si := range added {
-		if id == sb.lsnode.ID() {
-			continue
-		}
+//		if id == sb.lsnode.ID() {
+//			continue
+//		}
 		dstURL := si.URL(sb.network) + transport.ObjURLPath(sb.trname) // direct destination URL
 		nrobin := &robin{stsdest: make(stsdest, sb.multiplier)}
 		for k := 0; k < sb.multiplier; k++ {
