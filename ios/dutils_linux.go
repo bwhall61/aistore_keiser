@@ -6,8 +6,9 @@
 package ios
 
 import (
+	"os"
+	"io/ioutil"
 	"flag"
-	"os/exec"
 	"strings"
 
 	"github.com/NVIDIA/aistore/3rdparty/glog"
@@ -22,6 +23,7 @@ import (
 const (
 	devPrefixReg = "/dev/"
 	devPrefixLVM = "/dev/mapper/"
+	blockDevicesJsonPath = "/scratch/bhall/aistore/ios/blockdevices.json"
 )
 
 type (
@@ -47,14 +49,24 @@ func fs2disks(fs string, testingEnv bool) (disks FsDisks) {
 	}
 
 	// 1. lsblk
-	var (
-		getDiskCommand   = exec.Command("lsblk", "-Jt")
-		outputBytes, err = getDiskCommand.Output()
-	)
-	if err != nil || len(outputBytes) == 0 {
-		glog.Errorf("%s: no disks, err: %v", fs, err)
-		return
-	}
+	// var (
+	// 	getDiskCommand   = exec.Command("lsblk", "-Jt")
+	// 	outputBytes, err = getDiskCommand.Output()
+	// )
+	// if err != nil || len(outputBytes) == 0 {
+	// 	glog.Errorf("%s: no disks, err: %v", fs, err)
+	// 	return
+	// }
+    
+	jsonFile, err := os.Open(blockDevicesJsonPath)
+    
+	if err != nil {
+		glog.Errorf("%v", err)
+	}	
+
+	defer jsonFile.Close()
+
+	outputBytes, _ := ioutil.ReadAll(jsonFile)
 
 	// 2. unmarshal
 	var lsBlkOutput LsBlk
