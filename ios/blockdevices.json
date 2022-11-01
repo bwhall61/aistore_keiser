@@ -1,0 +1,27 @@
+{
+   "blockdevices": [
+      {"name":"nvme0n1", "alignment":0, "min-io":512, "opt-io":0, "phy-sec":512, "log-sec":512, "rota":false, "sched":"none", "rq-size":1023, "ra":128, "wsame":"0B"},
+      {"name":"nvme1n1", "alignment":0, "min-io":512, "opt-io":0, "phy-sec":512, "log-sec":512, "rota":false, "sched":"none", "rq-size":1023, "ra":128, "wsame":"0B",
+         "children": [
+            {"name":"nvme1n1p1", "alignment":0, "min-io":512, "opt-io":0, "phy-sec":512, "log-sec":512, "rota":false, "sched":"none", "rq-size":1023, "ra":128, "wsame":"0B"},
+            {"name":"nvme1n1p2", "alignment":0, "min-io":512, "opt-io":0, "phy-sec":512, "log-sec":512, "rota":false, "sched":"none", "rq-size":1023, "ra":128, "wsame":"0B"},
+            {"name":"nvme1n1p3", "alignment":0, "min-io":512, "opt-io":0, "phy-sec":512, "log-sec":512, "rota":false, "sched":"none", "rq-size":1023, "ra":128, "wsame":"0B",
+               "children": [
+                  {"name":"centos-root", "alignment":0, "min-io":512, "opt-io":0, "phy-sec":512, "log-sec":512, "rota":false, "sched":null, "rq-size":128, "ra":128, "wsame":"0B"},
+                  {"name":"centos-swap", "alignment":0, "min-io":512, "opt-io":0, "phy-sec":512, "log-sec":512, "rota":false, "sched":null, "rq-size":128, "ra":128, "wsame":"0B"},
+                  {"name":"centos-scratch", "alignment":0, "min-io":512, "opt-io":0, "phy-sec":512, "log-sec":512, "rota":false, "sched":null, "rq-size":128, "ra":128, "wsame":"0B"}
+               ]
+            }
+         ]
+      },
+      {"name":"nvme2n1", "alignment":0, "min-io":512, "opt-io":0, "phy-sec":512, "log-sec":512, "rota":false, "sched":"none", "rq-size":1023, "ra":128, "wsame":"0B",
+         "children": [
+           {"name":"nvme2n1p1", "alignment":0, "min-io":512, "opt-io":0, "phy-sec":512, "log-sec":512, "rota":false, "sched":"none", "rq-size":1023, "ra":128, "wsame":"0B",
+               "children": [
+                  {"name":"centos-scratch", "alignment":0, "min-io":512, "opt-io":0, "phy-sec":512, "log-sec":512, "rota":false, "sched":null, "rq-size":128, "ra":128, "wsame":"0B"}
+               ]
+           }
+         ]
+      }
+   ]
+}
